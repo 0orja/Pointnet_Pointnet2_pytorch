@@ -1,0 +1,28 @@
+PARAMETER ...
+Namespace(batch_size=24, decay_rate=0.0001, epoch=200, gpu='0', learning_rate=0.001, log_dir='log/', model='pointnet2_cls_ssg', num_category=40, num_point=1024, optimizer='Adam', process_data=False, use_cpu=True, use_normals=True, use_uniform_sample=False)
+Load dataset ...
+The size of train data is 120
+The size of test data is 400
+Use pretrain model
+Epoch 1 (22/200):
+Train Instance Accuracy: 0.675000
+Test Instance Accuracy: 0.335784, Class Accuracy: 0.330000
+Best Instance Accuracy: 0.335784, Class Accuracy: 0.330000
+Saving at log/classification/log/checkpoints/best_model.pth
+Epoch 2 (23/200):
+Train Instance Accuracy: 0.758333
+Test Instance Accuracy: 0.359069, Class Accuracy: 0.353750
+Best Instance Accuracy: 0.359069, Class Accuracy: 0.353750
+Saving at log/classification/log/checkpoints/best_model.pth
+Epoch 3 (24/200):
+Train Instance Accuracy: 0.716667
+Test Instance Accuracy: 0.393382, Class Accuracy: 0.386562
+Best Instance Accuracy: 0.393382, Class Accuracy: 0.386562
+Saving at log/classification/log/checkpoints/best_model.pth
+Epoch 4 (25/200):
+Train Instance Accuracy: 0.766667
+Test Instance Accuracy: 0.425245, Class Accuracy: 0.426250
+Best Instance Accuracy: 0.425245, Class Accuracy: 0.426250
+Saving at log/classification/log/checkpoints/best_model.pth
+Epoch 5 (26/200):
+Train Instance Accuracy: 0.800000

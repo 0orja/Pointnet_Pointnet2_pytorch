@@ -60,7 +60,11 @@ class ModelNetDataLoader(Dataset):
         else:
             self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
 
-        self.cat = [line.rstrip() for line in open(self.catfile)]
+        #self.cat = [line.rstrip() for line in open(self.catfile)]
+        self.cat = []
+        with open(self.catfile, 'r') as f:
+            for line in f:
+                self.cat.append(line.rstrip())
         self.classes = dict(zip(self.cat, range(len(self.cat))))
 
         shape_ids = {}
@@ -68,8 +72,22 @@ class ModelNetDataLoader(Dataset):
             shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet10_train.txt'))]
             shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet10_test.txt'))]
         else:
-            shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_train.txt'))]
-            shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_test.txt'))]
+            # modify to train 3 objects of each category (120 total)
+
+            #shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'train_size3.txt'))]
+            n = 15
+            shape_ids['train'] = []
+            with open(os.path.join(self.root, f'train_size{n}.txt'), 'r') as f:
+                for line in f:
+                    shape_ids['train'].append(line.rstrip())
+            #print(shape_ids['train'])
+
+            #shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_train.txt'))]
+            #shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_test.txt'))
+            shape_ids['test'] = []
+            with open(os.path.join(self.root, 'test_size10.txt'), 'r') as f:
+                for line in f:
+                    shape_ids['test'].append(line.rstrip())
 
         assert (split == 'train' or split == 'test')
         shape_names = ['_'.join(x.split('_')[0:-1]) for x in shape_ids[split]]
